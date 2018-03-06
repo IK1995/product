@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.haja4.myapplication.MainActivity"
+>
+    <ImageView
+        android:id="@+id/ImageView"
+        android:scaleType="centerInside"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/mario"/>
+    <!--問題文の画像を表示させる部分
+    draurableに格納　　[mario]の部分に画像ファイル名
+    scaleTyape=centerInsideじゃないとタイトルに隠れたりする-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Text"
+        android:text=""/>
+    <!--座標の確認用に上は作ったもの
+    不必要なら削除-->
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/android"
+        android:id="@+id/ImagePoint"/>
+　　　<!--判定するポインタ(カーソル)の役割を果たす画像
+        drawableに入れる   「android」の部分に画像ファイル名
+        大きさは適当-->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginStart="87dp"
+        android:text="Button" />
+        <!--判定用のボタン-->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_toEndOf="@+id/button"
+        android:layout_toRightOf="@+id/button"
+        android:text="モード変更" />
+    <!--モード変更がちゃんとできるかの確認で作ったボタン
+        たぶん不要　
+        押すとモードを表す変数が変更-->
+</RelativeLayout>
+
