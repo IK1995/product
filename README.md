@@ -6,3 +6,5 @@ MyApplication: ファイル<br><br>
   Hyouzi.java :判定用メソッドなど<br><br>
   activity_main.xml :見た目のアレ　画像などは自分で突っ込んでください<br><br>
   AndroidManifest.xml :タイトルバーを非表示にするために変更しました<br><br>
+  画像はMyApplication/app/src/main/res/drawableに突っ込んでください<br><br>
+  その中にあるandroidはカーソル用の画像です<br>
