@@ -7,20 +7,27 @@
     android:layout_height="match_parent"
     tools:context="com.example.haja4.myapplication.MainActivity"
 >
-    <ImageView
+
+        <ImageView
         android:id="@+id/ImageView"
-        android:scaleType="centerInside"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@drawable/mario"/>
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/mario" />
     <!--問題文の画像を表示させる部分
     draurableに格納　　[mario]の部分に画像ファイル名
     scaleTyape=centerInsideじゃないとタイトルに隠れたりする-->
     <TextView
+        android:id="@+id/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Text"
-        android:text=""/>
+        android:layout_below="@+id/ImagePoint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="おかしな部分は？"
+        android:textSize="40sp" />
     <!--座標の確認用に上は作ったもの
     不必要なら削除-->
     <ImageView
@@ -35,24 +42,12 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="48dp"
-        android:layout_marginLeft="87dp"
-        android:layout_marginStart="87dp"
-        android:text="Button" />
+        android:layout_below="@+id/ImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="判定"
+        android:textSize="30sp" />
         <!--判定用のボタン-->
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button"
-        android:layout_marginLeft="70dp"
-        android:layout_marginStart="70dp"
-        android:layout_toEndOf="@+id/button"
-        android:layout_toRightOf="@+id/button"
-        android:text="モード変更" />
     <!--モード変更がちゃんとできるかの確認で作ったボタン
         たぶん不要　
         押すとモードを表す変数が変更-->
