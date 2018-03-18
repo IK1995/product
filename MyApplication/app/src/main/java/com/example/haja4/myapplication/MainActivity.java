@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.view.View.OnTouchListener;
 import android.view.View.OnClickListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 //public class MainActivity extends Activity implements OnTouchListener{
 public class MainActivity extends AppCompatActivity  implements OnTouchListener{
     private Hyouzi pop;//判定、その他のメソッドが入った関数
@@ -20,7 +23,6 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
     private int i;//問題番号
     private FrameLayout frameLayout01;
     private ImageView target;//カーソル（ポインタ）
-
     private int targetLocalX;//カーソル（ポインタ）を動かしているときのX座標
     private int targetLocalY;//～～～を～～～ときのY座標
     private int screenX;////https://dev.classmethod.jp/smartphone/android/touch/を参考にした
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
     //boolean judge = false; //判定用　おかしなところなしの問題を作るなら配列になるかも
     static final int RESULT_SUBACTIVITY = 1000;
     ImageView image1;
+    final int questionNumber=10;
+    //問題数
+    element[] ques = new element[25];//読み込むtxtファイルにある問題数
+    element[] dim=new element[questionNumber];
+    int[] num = new int[10];
+    ArrayList<Integer> list = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +47,14 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
 
         pop= new Hyouzi();
         mode = 0;
+        Intent inten = getIntent();
+        num = inten.getIntArrayExtra("number");
 
         Button button = (Button)findViewById(R.id.button);//判定ボタン
         //Button button2 = findViewById(R.id.button2);//モード変更ボタン（おそらく不要になるかも）
-
+        ques[i]=pop.number(list.get(i));
         image1 = new ImageView(this);//問題画像
-        image1.setImageResource(pop.number(mode,i));//問題画像を表示する
+        image1.setImageResource(ques[i].qID);//問題画像を表示する
         target = (ImageView)findViewById(R.id.ImagePoint);//IDを取得
         target.setOnTouchListener(this);//カーソル（ポインタをタッチしたときの挙動）下にある
 
@@ -53,10 +63,11 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
             public void onClick(View v) {//判定用ボタンをクリック（タップ）したときの判定
                 judge_x=target.getLeft()+target.getWidth()/2;
                 judge_y=target.getTop()+target.getHeight()/2;
-                judge=pop.Judge(judge_x,judge_y,i);//判定、合っていれば正解が入る
+                judge=pop.Judge(judge_x,judge_y,ques[i]);//判定、合っていれば正解が入る
                 Intent intent = new Intent(getApplication(), result_pic.class);
                 intent.putExtra("JUDGE", judge);
                 intent.putExtra("Number",i);
+                intent.putExtra("ID",ques[i].aID);
                 startActivityForResult(intent,RESULT_SUBACTIVITY);
             }
         });
@@ -71,7 +82,7 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
                 null != intent) {
             i = intent.getIntExtra("nuMber",0);
             ImageView image1 = (ImageView)findViewById(R.id.ImageView);//画像の変更
-            image1.setImageResource(pop.number(mode,i));//おそらくここで別のプロセス（画面遷移などはいるかも？）
+            image1.setImageResource(ques[i].qID);//おそらくここで別のプロセス（画面遷移などはいるかも？）
         }
     }
 

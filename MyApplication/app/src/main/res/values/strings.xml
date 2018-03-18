@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">騙されるな！</string>
+
+    <string name="home_msg">詐欺防止ｗ</string>
+
+    <string name="start_but">スタート</string>
+
+    <string name="record_but">成績</string>
+
+    <string name="record_msg">ここではあなたの成績を表示します</string>
+
+    <string name="end_msg1">あなたの成績は</string>
+
+    <string name="end_msg2">でした</string>
+
+    <string name="end_msg3">もっと頑張りましょう</string>
+
+    <string name="back_start">スタートに戻る</string>
 </resources>

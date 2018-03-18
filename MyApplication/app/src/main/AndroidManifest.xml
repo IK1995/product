@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         >
         <!--themeをこうすれば上部のタイトルバーが消えるそうです-->
-        <activity android:name=".MainActivity">
+        <activity android:name=".TitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +19,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".result_pic">
+
+        </activity>
+        <activity android:name=".EndActivity">
+
+        </activity>
+        <activity android:name=".RecordActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
 
         </activity>
     </application>
