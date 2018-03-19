@@ -1,6 +1,8 @@
 package com.example.haja4.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,6 +15,9 @@ import android.widget.ImageView;
 import android.view.View.OnTouchListener;
 import android.view.View.OnClickListener;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -37,24 +42,42 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
     //問題数
     element[] ques = new element[25];//読み込むtxtファイルにある問題数
     element[] dim=new element[questionNumber];
-    int[] num = new int[10];
+    int[] num = {0,1};//new int[10];
     ArrayList<Integer> list = new ArrayList<Integer>();
+    InputStream is = null;
+    BufferedReader br = null;
+    String text = "";
+    String[] str =new String[2];
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        AssetManager as = getResources().getAssets();
         pop= new Hyouzi();
-        mode = 0;
-        Intent inten = getIntent();
-        num = inten.getIntArrayExtra("number");
+        i = 0;
+        //Intent inten = getIntent();
+        //num = inten.getIntArrayExtra("number");
+        try {
+        //is = this.getAssets().open("sample.txt");
+        //FileInputStream file = context.openFileInput("sample.txt");
+        is = as.open("sample.txt");
+        br = new BufferedReader(new InputStreamReader(is));
+        for (int i = 0; i < 2; i++) {//i<2の2はtxtに書かれている問題数
+            str[i] = br.readLine();//すべての問題をまず格納
+        }
+        }catch(Exception e){
+            str[i]="1 100 200 500 800 R.drawable.mario R.drawable.charac";
+        }
 
         Button button = (Button)findViewById(R.id.button);//判定ボタン
         //Button button2 = findViewById(R.id.button2);//モード変更ボタン（おそらく不要になるかも）
-        ques[i]=pop.number(list.get(i));
+        for(int j=0;j<2;j++) {
+            ques[j] = pop.number(str[num[j]]);//list.get(i));
+        }
         image1 = new ImageView(this);//問題画像
-        image1.setImageResource(ques[i].qID);//問題画像を表示する
+        image1.setImageResource(getResources().getIdentifier(ques[i].qID,"drawable",getPackageName()));//問題画像を表示する
         target = (ImageView)findViewById(R.id.ImagePoint);//IDを取得
         target.setOnTouchListener(this);//カーソル（ポインタをタッチしたときの挙動）下にある
 
@@ -82,7 +105,7 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
                 null != intent) {
             i = intent.getIntExtra("nuMber",0);
             ImageView image1 = (ImageView)findViewById(R.id.ImageView);//画像の変更
-            image1.setImageResource(ques[i].qID);//おそらくここで別のプロセス（画面遷移などはいるかも？）
+            image1.setImageResource(getResources().getIdentifier(ques[i].qID,"drawable",getPackageName()));//おそらくここで別のプロセス（画面遷移などはいるかも？）
         }
     }
 

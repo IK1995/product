@@ -1,2 +1,2 @@
-1 100 200 500 800 R.drawable.mario R.drawable.charac
-2 100 200 500 800 R.drawable.ppppp R.drawable.suzukiface
+1 100 200 500 800 mario charac
+2 100 200 500 800 ppppp suzukiface

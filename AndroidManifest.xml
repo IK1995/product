@@ -21,6 +21,13 @@
         <activity android:name=".result_pic">
 
         </activity>
+        <activity android:name=".EndActivity">
+
+        </activity>
+        <activity android:name=".RecordActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@
         android:layout_height="300dp"
         android:layout_below="@+id/Answer"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/android" />
+        android:src="@drawable/charac" />
 
     <Button
         android:id="@+id/button"

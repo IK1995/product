@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.view.View.OnClickListener;
@@ -15,6 +16,8 @@ public class result_pic extends AppCompatActivity {
     String str;
     private int roop;
     Intent intent;
+    String aID;
+    ImageView image1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,10 @@ public class result_pic extends AppCompatActivity {
 
         str = intent.getStringExtra("JUDGE");//正解or不正解
         roop = intent.getIntExtra("Number",0);//前の画面で言うi
+        aID = intent.getStringExtra("ID");
+        image1 = (ImageView)findViewById(R.id.Kaisetsu);//画像の変更
+        image1.setImageResource(getResources().getIdentifier(aID,"drawable",getPackageName()));
+
         //ここに解説用画像を表示するアレを書く予定
         roop++;//一応ここで増やしておく
         ((TextView)findViewById(R.id.Answer)).setText(str);
@@ -33,12 +40,16 @@ public class result_pic extends AppCompatActivity {
        button.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {//判定用ボタンをクリック（タップ）したときの判定
-                if(roop<10){//10以下なら前の画面に、以上ならお疲れ様画面に
+                if(roop<2){//10以下なら前の画面に、以上ならお疲れ様画面に
                     Intent intent = new Intent(getApplication(), MainActivity.class);
                     intent.putExtra("nuMber",roop);
                     //startActivity(intent);
                     setResult(RESULT_OK, intent);
                     finish();//一応
+                }else{
+                    Intent intent = new Intent(getApplication(),EndActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
            }
         });

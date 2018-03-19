@@ -13,7 +13,7 @@ public class TitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_title);
 
         // listに値を入れる。この段階では昇順
        // for(int i = 0 ; i < 25 ; i++) {
