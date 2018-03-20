@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity  implements OnTouchListener{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//判定用ボタンをクリック（タップ）したときの判定
-                judge_x=target.getLeft()+target.getWidth()/2;
-                judge_y=target.getTop()+target.getHeight()/2;
+                float density = getResources().getDisplayMetrics().density;
+                judge_x=(int)((target.getLeft()+target.getWidth()/2)/density + 0.5f);
+                judge_y=(int)((target.getTop()+target.getHeight()/2)/density + 0.5f);
                 judge=pop.Judge(judge_x,judge_y,ques[i]);//判定、合っていれば正解が入る
                 Intent intent = new Intent(getApplication(), result_pic.class);
                 intent.putExtra("JUDGE", judge);
